@@ -12,7 +12,7 @@
           <h1>Class List</h1>
         </div>
         <div class="col-sm-6" style="text-align:right">
-            <a href="{{url('admin/class/add')}}" class="btn btn-primary">Add New Class</a>
+            <a href="{{url('admin/subject/add')}}" class="btn btn-primary">Add New Class</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -76,7 +76,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($getrecords as $value)  
+                  {{-- @foreach ($getrecords as $value)  
 
                  <tr>
                     <td>{{$value->id}}</td>
@@ -95,11 +95,11 @@
                       <a href="{{url('admin/class/delete/'.$value->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                  </tr>
-                @endforeach
+                @endforeach --}}
                 </tbody>
               </table>
               <div class="" style="padding:10px; float:right; padding">
-                {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                {{-- {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!} --}}
               </div>
             </div>
             <!-- /.card-body -->

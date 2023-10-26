@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\SubjectConroller;
 
 
 
@@ -28,7 +29,7 @@ Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/forgot',[AuthController::class,'forgotpassword'])->name('forgot');
 Route::post('/forgotmail',[AuthController::class,'ForgotPasswordMail'])->name('forgotloginPassword');
 
-Route::group(['middleware' => 'admin'],function(){
+Route::group(['middleware' => 'admin'],function(){  
     Route::get('admin/dashboard',[DashController::class,'dashboard']);
     Route::get('admin/admin/list',[AdminController::class,'add_list'])->name('add_list');
     Route::get('admin/admin/add',[AdminController::class,'add_admin'])->name('add_admin');
@@ -42,6 +43,11 @@ Route::group(['middleware' => 'admin'],function(){
     Route::post('admin/class/add',[ClassController::class,'add_insert'])->name('add_insert');
     Route::get('admin/class/edit/{id}',[ClassController::class,'edit'])->name('edit');
     Route::post('admin/class/update/{id}',[ClassController::class,'update'])->name('update');
+    Route::get('admin/class/delete/{id}',[ClassController::class,'delete'])->name('delete');
+    
+    //Subjects
+    Route::get('admin/subject/list',[SubjectConroller::class,'list'])->name('list');
+    Route::get('admin/subject/add',[SubjectConroller::class,'add'])->name('add');
 
 }); 
 

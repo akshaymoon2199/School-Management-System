@@ -52,8 +52,15 @@ class ClassController extends Controller
     {
         $save= ClassModel::singlerecord($id);
         $save->name = $request->name;
-        $save->satus = $request->status;    
+        $save->status = $request->status;    
         $save->save();
         return redirect('admin/class/list')->with('success', 'Update Class Sucessfully');
+    }
+    public function delete($id)
+    {
+        $save= ClassModel::singlerecord($id);
+        $save->is_delete = 1;
+        $save->save();
+        return redirect()->back()->with('success', 'Class Deleted Successfully');   
     }
 }

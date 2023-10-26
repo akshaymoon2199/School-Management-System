@@ -32,7 +32,7 @@
                 print_r();
               echo "</pre>";
           @endphp --}}
-          <form method="POST" action="">
+          <form method="POST" action="{{url('admin/class/update/'.$getrecords->id)}}">
             @csrf
               <div class="card-body">
                 <label for="validationCustom01" class="form-label">Name</label>
