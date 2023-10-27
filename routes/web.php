@@ -48,6 +48,10 @@ Route::group(['middleware' => 'admin'],function(){
     //Subjects
     Route::get('admin/subject/list',[SubjectConroller::class,'list'])->name('list');
     Route::get('admin/subject/add',[SubjectConroller::class,'add'])->name('add');
+    Route::post('admin/subject/add',[SubjectConroller::class,'insert'])->name('insert');
+    Route::get('admin/subject/edit/{id}',[SubjectConroller::class,'edit'])->name('edit');
+    Route::post('admin/subject/update/{id}',[SubjectConroller::class,'update'])->name('update');
+    Route::get('admin/subject/delete/{id}',[SubjectConroller::class,'delete'])->name('delete');
 
 }); 
 

@@ -23,20 +23,24 @@
         </div><!-- /.container-fluid -->
       </section>
 
-
     <div class="row">
       <div class="col-md-12">
         <div class="card card-primary"> 
-          <form method="POST" action="{{Route('add_insert')}}">
+          <form method="POST" action="{{Route('insert')}}">
             @csrf 
               <div class="card-body">
-                <label for="validationCustom01" class="form-label">Class Name</label>
+                <label for="validationCustom01" class="form-label">Subject Name</label>
                 <input type="text" class="form-control" name="name" value="{{old('name')}}" id="validationCustom01" placeholder="Class Name" >
               <div style="color:red">{{$errors->first('name')}}</div>  
               </div>
               <div class="card-body">
-                <label for="validationCustom01" class="form-label">Type</label>
-                <input type="text" class="form-control" name="type" value="{{old('type')}}" id="validationCustom01" placeholder="Class Name" >
+                <label for="validationCustom01" class="form-label">Subject Type</label> 
+                <select class="form-control" name="type" id="validationCustom01" placeholder="Select Type" > 
+                    {{-- <option value=""></option>     --}}
+                    <option value="Theory">Selected type</option>
+                    <option value="Theory">Theory</option>
+                    <option value="Practical">Practtical</option>   
+                </select>  
               <div style="color:red">{{$errors->first('type')}}</div>  
               </div>
               <div class="card-body">
@@ -49,7 +53,6 @@
               <div style="color:red">{{$errors->first('Status')}}</div>  
               </div>
               
-            
             <div class="card-footer">
               <button type="submit"  class="btn btn-primary">Submit</button>
             </div>

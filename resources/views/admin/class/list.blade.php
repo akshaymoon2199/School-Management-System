@@ -9,7 +9,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Class List</h1>
+          <h1>Subject List</h1>
         </div>
         <div class="col-sm-6" style="text-align:right">
             <a href="{{url('admin/class/add')}}" class="btn btn-primary">Add New Class</a>
@@ -60,7 +60,7 @@
           <div class="card">
             <div class="card-header col-md-12 ">
               {{-- <h3 class="card-title">Admin List  (Total : {{$getrecords->total()}})</h3>   --}}
-              <h3 class="card-title">Class List  (Total :)</h3>  
+              <h3 class="card-title">Subject List  (Total :{{$getrecords->total()}} )</h3>  
             </div>
              <!-- /.card-header -->
             <div class="card-body p-0">
