@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassSubjectConroller;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\SubjectConroller;
 
@@ -46,12 +47,22 @@ Route::group(['middleware' => 'admin'],function(){
     Route::get('admin/class/delete/{id}',[ClassController::class,'delete'])->name('delete');
     
     //Subjects
-    Route::get('admin/subject/list',[SubjectConroller::class,'list'])->name('list');
+    Route::get('admin/subject/list',[SubjectConroller::class,'list'])->name('subject.list');
     Route::get('admin/subject/add',[SubjectConroller::class,'add'])->name('add');
-    Route::post('admin/subject/add',[SubjectConroller::class,'insert'])->name('insert');
+    Route::post('admin/subject/add',[SubjectConroller::class,'insert'])->name('subject.insert');
     Route::get('admin/subject/edit/{id}',[SubjectConroller::class,'edit'])->name('edit');
     Route::post('admin/subject/update/{id}',[SubjectConroller::class,'update'])->name('update');
     Route::get('admin/subject/delete/{id}',[SubjectConroller::class,'delete'])->name('delete');
+
+    //Assign Subject 
+    Route::get('admin/assign_subject/list',[ClassSubjectConroller::class,'list'])->name('assign_subject.list');
+    Route::get('admin/assign_subject/add',[ClassSubjectConroller::class,'add'])->name('add');
+    Route::post('admin/assign_subject/add',[ClassSubjectConroller::class,'insert'])->name('assign_subject.insert');
+    Route::get('admin/assign_subject/edit/{id}',[ClassSubjectConroller::class,'edit'])->name('edit');
+    Route::post('admin/assign_subject/update/{id}',[ClassSubjectConroller::class,'update'])->name('update');
+    Route::get('admin/assign_subject/delete/{id}',[ClassSubjectConroller::class,'delete'])->name('delete');
+
+
 
 }); 
 

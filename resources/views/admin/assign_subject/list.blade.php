@@ -9,10 +9,10 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Class List</h1>
+          <h1>Assign Subject List</h1>  
         </div>
         <div class="col-sm-6" style="text-align:right">
-            <a href="{{url('admin/subject/add')}}" class="btn btn-primary">Add New Class</a>
+            <a href="{{url('admin/assign_subject/add')}}" class="btn btn-primary">Assign new Subject </a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -43,7 +43,7 @@
                       </div>
                       <div class="col-md-3">
                         <button class="btn btn-primary" type="submit" style="margin-top:31px;">Search</button>
-                        <a href="{{route('subject.list')}}" class="btn btn-success"  style="margin-top:31px;">Reset</a>
+                        <a href="{{route('assign_subject.list')}}" class="btn btn-success"  style="margin-top:31px;">Reset</a>
                       </div>
                   </div>
                 </form>
@@ -64,7 +64,7 @@
           <div class="card">
             <div class="card-header col-md-12 ">
               {{-- <h3 class="card-title">Admin List  (Total : {{$getrecords->total()}})</h3>   --}}
-              <h3 class="card-title">Class List  (Total : {{$getrecords->total()}})</h3>  
+              <h3 class="card-title" >Assign Subject List  (Total : )</h3>  
             </div>
              <!-- /.card-header -->
             <div class="card-body p-0">
@@ -73,7 +73,6 @@
                   <tr>
                     <th style="">Id</th>
                     <th>Name</th>
-                    <th>Type</th>
                     <th>Status</th>
                     <th>Created by</th>
                     <th style="">Create Date</th>
@@ -81,7 +80,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($getrecords as $value)  
+                  {{-- @foreach ($getrecords as $value)  
 
                  <tr>
                     <td>{{$value->id}}</td>
@@ -98,15 +97,15 @@
                     <td>{{$value->create_by_name}}</td> 
                     <td>{{date('d-m-y H:i A',strtotime($value->created_at))}} </td>
                     <td style=" text-align: center">
-                      <a href="{{url('admin/subject/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
-                      <a href="{{url('admin/subject/delete/'.$value->id)}}" class="btn btn-danger">Delete</a>
+                      <a href="{{url('admin/assign_subject/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
+                      <a href="{{url('admin/assign_subject/delete/'.$value->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                  </tr>
-                @endforeach
+                @endforeach --}}
                 </tbody>
               </table>
               <div class="" style="padding:10px; float:right; padding">
-                {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                {{-- {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!} --}}
               </div>
             </div>
             <!-- /.card-body -->

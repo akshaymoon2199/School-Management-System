@@ -35,6 +35,17 @@ class Subject extends Model
         return $request;
     }
 
+    static function SubjectGetrecords()
+    {
+        $request = Subject::select('subjects.*', )
+            ->join('users', 'users.id', 'subjects.created_by')
+            ->where('subjects.is_delete', '=', 0)
+            ->where('subjects.status', '=', 0)
+            ->orderBy('Subjects.name', 'asc')
+            ->get();
+            return $request;
+    }
+
 
 
 

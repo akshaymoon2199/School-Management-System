@@ -14,10 +14,10 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Add Subject</h1>
+              <h1>Assign Subject</h1>
             </div>
             <div class="col-sm-6" style="text-align:right">
-               <a href="{{url('/admin/subject/list')}}" class="btn btn-primary">Back</a>
+               <a href="{{url('/admin/assign_subject/list')}}" class="btn btn-primary">Back</a>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -26,21 +26,24 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-primary"> 
-          <form method="POST" action="{{Route('subject.insert')}}">
+          <form method="POST" action="{{Route('assign_subject.insert')}}">
             @csrf 
               <div class="card-body">
-                <label for="validationCustom01" class="form-label">Subject Name</label>
-                <input type="text" class="form-control" name="name" value="{{old('name')}}" id="validationCustom01" placeholder="Class Name" >
-              <div style="color:red">{{$errors->first('name')}}</div>  
-              </div>
-              <div class="card-body">
-                <label for="validationCustom01" class="form-label">Subject Type</label> 
-                <select class="form-control" name="type" id="validationCustom01" placeholder="Select Type" > 
-                    {{-- <option value=""></option>     --}}
-                    <option value="">Selected type</option>
-                    <option value="Theory">Theory</option>
-                    <option value="Practical">Practtical</option>   
+                <label for="validationCustom01" class="form-label">Class Name</label> 
+                <select class="form-control" name="class_id" id="validationCustom01" placeholder="Select Type" > 
+                  @foreach ($ClassGetrecords as $value)
+                  <option value="{{$value->id}}">{{$value->name}}</option>
+                  @endforeach
                 </select>  
+              <div style="color:red">{{$errors->first('type')}}</div>  
+              </div>
+              <div class="card-body"> 
+                <label for="validationCustom01" class="form-label">Subject Name</label> 
+                  @foreach ($SubjectGetrecords as $value)
+                    <div class="" style="font-weight:normal;">
+                      <input type="checkbox" value="{{$value->id}}" name="subject_id[]">  {{$value->name}}
+                    </div>
+                  @endforeach
               <div style="color:red">{{$errors->first('type')}}</div>  
               </div>
               <div class="card-body">

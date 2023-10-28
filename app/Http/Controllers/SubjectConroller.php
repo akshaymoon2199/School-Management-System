@@ -29,7 +29,7 @@ class SubjectConroller extends Controller
         $subject->status = $request->status;
         $subject->created_by = Auth::user()->id;
         $subject->save();
-        return redirect()->route('list')->with('success', 'New Class add Successfully');
+        return redirect()->route('subject.list')->with('success', 'New Class add Successfully');
     }
      public function edit($id)
     {
