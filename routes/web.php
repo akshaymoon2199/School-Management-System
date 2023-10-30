@@ -32,12 +32,12 @@ Route::post('/forgotmail',[AuthController::class,'ForgotPasswordMail'])->name('f
 
 Route::group(['middleware' => 'admin'],function(){  
     Route::get('admin/dashboard',[DashController::class,'dashboard']);
-    Route::get('admin/admin/list',[AdminController::class,'add_list'])->name('add_list');
-    Route::get('admin/admin/add',[AdminController::class,'add_admin'])->name('add_admin');
-    Route::post('admin/admin/add',[AdminController::class,'add_insert'])->name('add_insert');
-    Route::get('admin/admin/edit/{id}',[AdminController::class,'edit'])->name('edit');
-    Route::post('admin/admin/update/{id}',[AdminController::class,'update'])->name('update');
-    Route::get('admin/admin/delete/{id}',[AdminController::class,'delete'])->name('delete');
+    Route::get('admin/admin/list',[AdminController::class,'add_list'])->name('admin.add_list');
+    Route::get('admin/admin/add',[AdminController::class,'add_admin'])->name('admin.add_admin');
+    Route::post('admin/admin/add',[AdminController::class,'add_insert'])->name('admin.add_insert');
+    Route::get('admin/admin/edit/{id}',[AdminController::class,'edit'])->name('admin.edit');
+    Route::post('admin/admin/update/{id}',[AdminController::class,'update'])->name('admin.update');
+    Route::get('admin/admin/delete/{id}',[AdminController::class,'delete'])->name('admin.delete');
     // class url's
     Route::get('admin/class/list',[ClassController::class,'add_list'])->name('add_list');
     Route::get('admin/class/add',[ClassController::class,'add_class'])->name('add_class');
@@ -58,9 +58,9 @@ Route::group(['middleware' => 'admin'],function(){
     Route::get('admin/assign_subject/list',[ClassSubjectConroller::class,'list'])->name('assign_subject.list');
     Route::get('admin/assign_subject/add',[ClassSubjectConroller::class,'add'])->name('add');
     Route::post('admin/assign_subject/add',[ClassSubjectConroller::class,'insert'])->name('assign_subject.insert');
-    Route::get('admin/assign_subject/edit/{id}',[ClassSubjectConroller::class,'edit'])->name('edit');
-    Route::post('admin/assign_subject/update/{id}',[ClassSubjectConroller::class,'update'])->name('update');
-    Route::get('admin/assign_subject/delete/{id}',[ClassSubjectConroller::class,'delete'])->name('delete');
+    Route::get('admin/assign_subject/edit/{id}',[ClassSubjectConroller::class,'edit'])->name('assign_subject.edit');
+    Route::post('admin/assign_subject/update/{id}',[ClassSubjectConroller::class,'update'])->name('assign_subject.update');
+    Route::get('admin/assign_subject/delete/{id}',[ClassSubjectConroller::class,'delete'])->name('assign_subject.delete');
 
 
 

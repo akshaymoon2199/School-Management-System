@@ -37,7 +37,7 @@ class AdminController extends Controller
         $users->password = Hash::make($request->password);
         $users->user_type = 1;  
         $users->save();
-        return redirect()->route('add_list')->with('success', 'New Admin register successfully.');
+        return redirect()->route('admin.add_list')->with('success', 'New Admin register successfully.');
         
     }
 
@@ -64,7 +64,7 @@ class AdminController extends Controller
         $users->password = Hash::make($request->password);
         $users->user_type = 1;  
         $users->save();
-        return redirect()->route('add_list')->with('success', 'New Admin update successfully.');
+        return redirect()->route('admin.add_list')->with('success', 'New Admin update successfully.');
         
     }
     public function delete($id)
@@ -72,7 +72,7 @@ class AdminController extends Controller
         $users = User::edit($id);
         $users->is_delete = 1;  
         $users->save();
-        return redirect()->route('add_list')->with('success', 'Delete Admin Record Successfully.');
+        return redirect()->route('admin.add_list')->with('success', 'Delete Admin Record Successfully.');
         
     }
 

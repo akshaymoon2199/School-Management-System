@@ -36,7 +36,7 @@ class Subject extends Model
     }
 
     static function SubjectGetrecords()
-    {
+    {       
         $request = Subject::select('subjects.*', )
             ->join('users', 'users.id', 'subjects.created_by')
             ->where('subjects.is_delete', '=', 0)

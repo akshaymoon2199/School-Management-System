@@ -31,11 +31,11 @@
                   <div class="row m-2">
                       <div class="col-md-3 ">
                         <label for="">Name</label>
-                        <input type="text" class="form-control" name="name" value="{{Request::get('name')}}" id="validationCustom01" placeholder="Enter Name" >
+                        <input type="text" class="form-control" name="class_name" value="{{Request::get('class_name')}}" id="validationCustom01" placeholder="Enter Name" >
                       </div>
                       <div class="col-md-3 ">
                         <label for="">Subject type</label>
-                        <input type="text" class="form-control" name="type" value="{{Request::get('type')}}" id="validationCustom01" placeholder="Enter Subject Type" >
+                        <input type="text" class="form-control" name="subject_name" value="{{Request::get('subject_name')}}" id="validationCustom01" placeholder="Enter Subject Type" >
                       </div>
                       <div class="col-md-3">
                         <label for="">Date</label>
@@ -60,10 +60,11 @@
     <div class="container-fluid">
       <div class="row">
         @include('message')
+       
         <div class="col-md-12"> 
           <div class="card">
             <div class="card-header col-md-12 ">
-              {{-- <h3 class="card-title">Admin List  (Total : {{$getrecords->total()}})</h3>   --}}
+              <h3 class="card-title">Admin List  (Total : {{$getrecords->total()}})</h3>  
               <h3 class="card-title" >Assign Subject List  (Total : )</h3>  
             </div>
              <!-- /.card-header -->
@@ -72,7 +73,8 @@
                 <thead>
                   <tr>
                     <th style="">Id</th>
-                    <th>Name</th>
+                    <th>Class Name</th>
+                    <th>Subject Name</th>
                     <th>Status</th>
                     <th>Created by</th>
                     <th style="">Create Date</th>
@@ -80,13 +82,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach ($getrecords as $value)  
+                  @foreach ($getrecords as $value)  
 
                  <tr>
                     <td>{{$value->id}}</td>
-                    <td>{{$value->name}}</td>
-                    <td>
-                          {{$value->type}}</td>
+                    <td>{{$value->class_name}}</td>
+                    <td>{{$value->subject_name}}</td>
                     <td>
                       @if($value->status ==  0)
                       <b>Active</b> 
@@ -101,13 +102,13 @@
                       <a href="{{url('admin/assign_subject/delete/'.$value->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                  </tr>
-                @endforeach --}}
+                @endforeach
                 </tbody>
               </table>
               <div class="" style="padding:10px; float:right; padding">
-                {{-- {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!} --}}
+                {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
               </div>
-            </div>
+            </div>    
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

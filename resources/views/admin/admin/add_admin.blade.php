@@ -27,7 +27,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-primary"> 
-          <form method="POST" action="{{Route('add_insert')}}">
+          <form method="POST" action="{{Route('admin.add_insert')}}">
             @csrf 
               <div class="card-body">
                 <label for="validationCustom01" class="form-label">Name</label>
