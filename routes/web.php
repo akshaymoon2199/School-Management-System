@@ -61,6 +61,8 @@ Route::group(['middleware' => 'admin'],function(){
     Route::get('admin/assign_subject/edit/{id}',[ClassSubjectConroller::class,'edit'])->name('assign_subject.edit');
     Route::post('admin/assign_subject/update/{id}',[ClassSubjectConroller::class,'update'])->name('assign_subject.update');
     Route::get('admin/assign_subject/delete/{id}',[ClassSubjectConroller::class,'delete'])->name('assign_subject.delete');
+    Route::get('admin/assign_subject/single_edit/{id}',[ClassSubjectConroller::class,'single_edit'])->name('assign_subject.single_edit');
+    Route::post('admin/assign_subject/single_update/{id}',[ClassSubjectConroller::class,'single_update'])->name('assign_subject.single_update');
 
 
 

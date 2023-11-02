@@ -24,7 +24,7 @@
         <div class="col-md-12"> 
           <div class="card">
             <div class="card-header col-md-12 ">
-              <h3 class="card-title"> Search</h3>
+              <h3 class="card-title">Search</h3>
             </div>    
               <div class="card-body p-0">
                 <form method="get" method="">
@@ -64,8 +64,8 @@
         <div class="col-md-12"> 
           <div class="card">
             <div class="card-header col-md-12 ">
-              <h3 class="card-title">Admin List  (Total : {{$getrecords->total()}})</h3>  
-              <h3 class="card-title" >Assign Subject List  (Total : )</h3>  
+              {{-- <h3 class="card-title">Admin List  (Total : {{$getrecords->total()}})</h3>   --}}
+              <h3 class="card-title" >Assign Subject List  (Total : <b>{{$getrecords->total()}}</b> )</h3>  
             </div>
              <!-- /.card-header -->
             <div class="card-body p-0">
@@ -83,7 +83,6 @@
                 </thead>
                 <tbody>
                   @foreach ($getrecords as $value)  
-
                  <tr>
                     <td>{{$value->id}}</td>
                     <td>{{$value->class_name}}</td>
@@ -99,12 +98,13 @@
                     <td>{{date('d-m-y H:i A',strtotime($value->created_at))}} </td>
                     <td style=" text-align: center">
                       <a href="{{url('admin/assign_subject/edit/'.$value->id)}}" class="btn btn-primary">Edit</a>
+                      <a href="{{url('admin/assign_subject/single_edit/'.$value->id)}}" class="btn btn-primary">Singel Edit</a>
                       <a href="{{url('admin/assign_subject/delete/'.$value->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                  </tr>
                 @endforeach
                 </tbody>
-              </table>
+              </table>  
               <div class="" style="padding:10px; float:right; padding">
                 {!! $getrecords->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
               </div>

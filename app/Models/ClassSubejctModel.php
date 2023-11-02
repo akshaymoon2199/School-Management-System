@@ -16,18 +16,19 @@ class ClassSubejctModel extends Model
             ->join('class', 'class.id', '=', 'class_subjects.class_id')
             ->join('subjects', 'subjects.id', '=', 'class_subjects.subject_id')
             ->join('users', 'users.id', '=', 'class_subjects.created_by');
-            if(!empty($request::get('class_name'))){
-                $request->where('class.name','like','%'.$request::get('class_name').'%');
+            if(!empty(Request::get('class_name'))){
+                $request=$request->where('class.name','like','%'.Request::get('class_name').'%');           
             }
-            if(!empty($request::get('subject_name'))){
-                $request->where('subjects.name','like','%'.$request::get('subject_name').'%');
+            if(!empty(Request::get('subject_name'))){
+                $request=$request->where('subjects.name','like','%'.Request::get('subject_name').'%');
             }
-            if(!empty($request::get('date'))){
-                $request->where('class_subjects.created_at','like','%'.$request::get('date').'%');
+            if(!empty(Request::get('date'))){
+                $request=$request->where('class_subjects.created_at','like','%'.Request::get('date').'%');
             }
             
-        $request = $request->orderby('class_subjects.id','desc')
-            ->paginate(10);
+    $request= $request->where('class_subjects.is_delete','=',0)
+            ->orderby('class_subjects.id','desc')           
+            ->paginate(5);
 
         return $request;
     }
@@ -46,5 +47,20 @@ class ClassSubejctModel extends Model
         return $request;        
 
     }
+    static function getAssignSubjectID($class_id) 
+    {
+        $request=self::where('class_id',$class_id)
+                    ->where('is_delete','=',0)
+                    ->get();
+        return $request;
+    }
+   public static function deleteBySubject($class_id, $subject_id)
+    {
+        return self::where('class_id', $class_id)
+            ->where('subject_id', $subject_id)
+            ->delete();
+    }
+
+
    
 }

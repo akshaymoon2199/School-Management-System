@@ -53,7 +53,7 @@
                 <option {{!empty($getrecords->status == 0) ? 'selected' : '' }} value="0">Active</option>
                 <option {{!empty($getrecords->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
                 </select>
-                <div style="color:red">{{$errors->first('email')}}</div>  
+                <div style="color:red">{{$errors->first('status')}}</div>  
               </div>  
 
             </div>

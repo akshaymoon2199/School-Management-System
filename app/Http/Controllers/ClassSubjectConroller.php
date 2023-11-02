@@ -51,9 +51,57 @@ class ClassSubjectConroller extends Controller
     }
     public function edit($id)
     {   
-        $data['records']=ClassSubejctModel::singlerecord($id);
-        // dd($data['records']);
-        $data['head_title']='Edit Class list';
-         return view('admin.assign_subject.edit',$data);
+        $getrecord= ClassSubejctModel::singlerecord($id);
+        if(!empty($getrecord)) {
+            $data['getrecord'] = $getrecord;
+            $data['getAssignSubjectID'] = ClassSubejctModel::getAssignSubjectID($getrecord->class_id);
+            // dd($data['getAssignSubjectID']);
+            $data['getClass'] = ClassModel::ClassGetrecords();
+            $data['getSubject'] =Subject::SubjectGetrecords();
+            $data['head_title'] = 'Edit Class';
+            // dd($data);
+            return view('admin.assign_subject.edit',$data);
+        }else{
+            abort(404);
+        }
+        
+    }
+
+    public function update(Request $request)        
+    {
+        // dd($request);
+          ClassSubejctModel::deleteBySubject($request->class_id,$request->subject_id);
+        if (!empty($request->subject_id)) {
+            foreach ($request->subject_id as $subject_id) {
+                $getAlreadyfirst = ClassSubejctModel::getAlreadyfirst($request->class_id, $subject_id);
+                if (!empty($getAlreadyfirst)) {
+                    $getAlreadyfirst->status = $request->status;
+                    $getAlreadyfirst->save();
+                } else {
+                    $save = new ClassSubejctModel;
+                    $save->class_id = $request->class_id;
+                    $save->subject_id = $subject_id;
+                    $save->created_by = Auth::user()->id;
+                    $save->status = $request->status;
+                    $save->save();
+                }
+            }
+        }
+        return redirect()->route('assign_subject.list')->with('success', 'Update Assign Subject Add Successfully');
+
+    }
+
+    public function delete($id)
+    {
+        $save= ClassSubejctModel::singlerecord($id);
+        
+        $save->is_delete = 1;
+        $save->save();
+        return redirect()->back()->with('success', 'Class Deleted Successfully');   
+    }
+
+    public function single_edit()
+    {
+        
     }
 }
