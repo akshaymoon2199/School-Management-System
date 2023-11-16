@@ -44,6 +44,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    static function getsingle($id)
+    {
+        return self::find($id);
+    }
+
     static function getrcords()     
     {
         $request = User::select('users.*')

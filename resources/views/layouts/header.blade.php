@@ -174,10 +174,19 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('admin/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+              <i class="nav-icon fas fa-user  "></i>
+              <p>
+                Change Password
+                <!-- <span class="badge badge-info right"></span> -->
+              </p>
+            </a>
+          </li>
          
          @elseif(Auth::user()->user_type == 2)
           <li class="nav-item">
-            <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+            <a href="{{url('teacher/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p> 
                 Dashboard
@@ -186,26 +195,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/list')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+            <a href="{{url('teacher/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
               <i class="nav-icon fas fa-user  "></i>
               <p>
-                Admin
-                <!-- <span class="badge badge-info right"></span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{url('admin/list')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
-              <i class="nav-icon fas fa-user  "></i>
-              <p>
-                teacher
-                <!-- <span class="badge badge-info right"></span> -->
+                Change Password
               </p>
             </a>
           </li>
           @elseif(Auth::user()->user_type == 3)
           <li class="nav-item">
-            <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+            <a href="{{url('student/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p> 
                 Dashboard
@@ -214,49 +213,29 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/list')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
-              <i class="nav-icon fas fa-user  "></i>
-              <p>
-                Admin
-                <!-- <span class="badge badge-info right"></span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{url('admin/list')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
-              <i class="nav-icon fas fa-user  "></i>
-              <p>
-                student
-                <!-- <span class="badge badge-info right"></span> -->
-              </p>
-            </a>
+              <a href="{{url('student/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+                <i class="nav-icon fas fa-user  "></i>
+                <p>
+                  Change Password
+                  <!-- <span class="badge badge-info right"></span> -->
+                </p>
+              </a>
           </li>
           @elseif(Auth::user()->user_type == 4)
           <li class="nav-item">
-            <a href="{{url('admin/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
+            <a href="{{url('perant/dashboard')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p> 
                 Dashboard
-                <!-- <span class="badge badge-info right"></span> -->
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('admin/list')}}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">
-              <i class="nav-icon fas fa-user  "></i>
-              <p>
-                Admin
-                <!-- <span class="badge badge-info right"></span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{url('admin/list')}}" class="nav-link">
-              <i class="nav-icon fas fa-user  "></i>
-              <p>
-                perant
-                <!-- <span class="badge badge-info right"></span> -->
-              </p>
+            <a href="{{url('perant/change_password')}}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p> 
+                  Change Password
+                </p>
             </a>
           </li>
           @endif

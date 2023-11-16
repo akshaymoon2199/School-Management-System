@@ -70,7 +70,7 @@ class ClassSubjectConroller extends Controller
     public function update(Request $request)        
     {
         // dd($request);
-          ClassSubejctModel::deleteBySubject($request->class_id,$request->subject_id);
+         ClassSubejctModel::deleteBySubject($request->class_id,$request->subject_id);
         if (!empty($request->subject_id)) {
             foreach ($request->subject_id as $subject_id) {
                 $getAlreadyfirst = ClassSubejctModel::getAlreadyfirst($request->class_id, $subject_id);
@@ -82,7 +82,7 @@ class ClassSubjectConroller extends Controller
                     $save->class_id = $request->class_id;
                     $save->subject_id = $subject_id;
                     $save->created_by = Auth::user()->id;
-                    $save->status = $request->status;
+                    $save->status = $request->status;   
                     $save->save();
                 }
             }
@@ -91,7 +91,7 @@ class ClassSubjectConroller extends Controller
 
     }
 
-    public function delete($id)
+        public function delete($id)
     {
         $save= ClassSubejctModel::singlerecord($id);
         
@@ -100,8 +100,37 @@ class ClassSubjectConroller extends Controller
         return redirect()->back()->with('success', 'Class Deleted Successfully');   
     }
 
-    public function single_edit()
+    public function single_edit($id)
     {
-        
+        $getrecord= ClassSubejctModel::singlerecord($id);
+        if(!empty($getrecord)) {
+            $data['getrecord'] = $getrecord;
+            // dd($data['getAssignSubjectID']);
+            $data['getClass'] = ClassModel::ClassGetrecords();
+            $data['getSubject'] =Subject::SubjectGetrecords();
+            $data['head_title'] = 'Edit Single Record';
+            // dd($data);
+            return view('admin.assign_subject.single_edit',$data);
+        }else{
+            abort(404);
+        }
+    }
+
+    public function single_update($id,Request $request)
+    {
+        $getAlreadyfirst = ClassSubejctModel::getAlreadyfirst($request->class_id, $request->subject_id);
+        if (!empty($getAlreadyfirst)) 
+        {   
+            $getAlreadyfirst->status = $request->status;
+            $getAlreadyfirst->save();
+            return redirect()->route('assign_subject.list')->with('success','Status update Successfully');
+        } else {
+            $save = ClassSubejctModel::singlerecord($id);
+            $save->class_id = $request->class_id;   
+            $save->subject_id = $request->subject_id;    
+            $save->status = $request->status;
+            $save->save();
+        }
+        return redirect()->route('assign_subject.list')->with('success', 'Update Assign Subject Add Successfully');
     }
 }
